@@ -1,1 +1,1 @@
-# JBG (Job Bank Group)
+# API - Thoth
