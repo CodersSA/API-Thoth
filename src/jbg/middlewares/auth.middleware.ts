@@ -11,7 +11,7 @@ export const signUpVerification = (req: Request, res: Response, next: NextFuncti
     const { body: { telf, email, password } } = req;
 
     if (typeof email == 'undefined' || typeof password == 'undefined' || typeof telf == 'undefined')
-        return res.status(400).json({ msg: err.SIGNUP_DATA_MISSIGN });
+        return res.status(400).json({ msg: err.SIGNUP_DATA_MISSING });
 
     if (!(email.trim() && emailValidator(email) && password.trim() && telf.trim()))
         return res.status(400).json({ msg: err.SIGNUP_DATA_ERROR });
@@ -23,7 +23,7 @@ export const signInVerification = (req: Request, res: Response, next: NextFuncti
     const { body: { email, password } } = req;
 
     if (typeof email == 'undefined' || typeof password == 'undefined')
-        return res.status(400).json({ msg: err.SIGNUP_DATA_MISSIGN });
+        return res.status(400).json({ msg: err.SIGNUP_DATA_MISSING });
 
     if (!(email.trim() && emailValidator(email) && password.trim()))
         return res.status(400).json({ msg: err.SIGNUP_DATA_ERROR });

@@ -29,6 +29,6 @@ app.get("/", (req, res) => res.send(`API is running at http://localhost:${app.ge
 
 // JBG (JOB BANK GROUP)
 app.use("/api/jbg/auth", authRoutes);
-app.use("/api/jbg", specialRoutes);
+app.use("/api/jbg/protected", specialRoutes);
 
 export default app;
