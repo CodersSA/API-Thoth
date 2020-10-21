@@ -1,5 +1,6 @@
 import { Document, model, Schema } from "mongoose";
 import bcrypt from "bcrypt";
+import { encrypt } from "../helpers/bcrypt";
 
 export interface IUser extends Document {
     email: string,
@@ -31,9 +32,9 @@ userSchema.pre<IUser>('save', async function (next) {
     if (!user.isModified("password")) return next();
 
     // New user
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(user.password, salt);
+    const hash = await encrypt(user.password);
     user.password = hash;
+    
     next();
 });
 
