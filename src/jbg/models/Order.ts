@@ -1,4 +1,5 @@
 import { Document, model, Schema } from "mongoose";
+import arrStatus from "../constant/orderStatus";
 
 export interface IOrder extends Document {
     idUser: string,
@@ -23,8 +24,8 @@ const orderSchema = new Schema({
     },
     status: {
         type: String,
-        enum: ['PENDING', 'PRICED', 'ACCEPTED', 'CLOSED'],
-        default: 'PENDING'
+        enum: arrStatus,
+        default: arrStatus[0]
     },
     categories: {
         type: Array,
