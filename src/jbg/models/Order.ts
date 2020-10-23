@@ -2,8 +2,10 @@ import { Document, model, Schema } from "mongoose";
 
 export interface IOrder extends Document {
     idUser: string,
+    title: string,
+    summary: string
     status: string
-    categories: Array<String>
+    categories: Array<string>
 };
 
 const orderSchema = new Schema({
@@ -11,9 +13,18 @@ const orderSchema = new Schema({
         type: String,
         required: true,
     },
+    title: {
+        type: String,
+        required: true
+    },
+    summary: {
+        type: String,
+        required: false
+    },
     status: {
         type: String,
-        enum: ['PENDING', 'PRICED', 'ACCEPTED', 'CLOSED']
+        enum: ['PENDING', 'PRICED', 'ACCEPTED', 'CLOSED'],
+        default: 'PENDING'
     },
     categories: {
         type: Array,
