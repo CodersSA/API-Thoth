@@ -74,7 +74,6 @@ export const changePassword = async (req: Request, res: Response): Promise<Respo
         if (!isMatch)
             throw new Error(err.REQUIRED_DATA_MISSING);
 
-        //! Falta encriptar
         const updatedUser = await updatePassword(userFound, body.newPwd);
         if (!updatedUser)
             throw new Error(err.DATABASE_ERROR);
@@ -94,8 +93,7 @@ export const changeProfile = async (req: Request, res: Response): Promise<Respon
         if (!id)
             throw new Error(err.INVALID_TOKEN);
 
-        // Get user's data ()
-        //! Falta filtro de salida
+        // Get user's data
         const userFound: IUser = await getUserById(id);
         if (!userFound)
             throw new Error(err.REQUIRED_DATA_MISSING);
